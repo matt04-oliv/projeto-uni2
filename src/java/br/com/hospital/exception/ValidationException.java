@@ -1,0 +1,7 @@
+package java.br.com.hospital.exception;
+
+public class ValidationException extends RuntimeException {
+    public ValidationException(String message) {
+        super(message);
+    }
+}
