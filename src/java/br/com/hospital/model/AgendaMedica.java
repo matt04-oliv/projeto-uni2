@@ -1,3 +1,5 @@
+package java.br.com.hospital.model;
+
 public class AgendaMedica {
 
     private String data;

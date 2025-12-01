@@ -1,3 +1,5 @@
+package java.br.com.hospital.model;
+
 public class Atendimento {
 
     private String dataHora;

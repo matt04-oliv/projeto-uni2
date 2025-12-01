@@ -1,3 +1,5 @@
+package java.br.com.hospital.model;
+
 public class ProfissionaisSaude {
 
     private String nome;
