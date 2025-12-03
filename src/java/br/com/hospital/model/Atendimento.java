@@ -4,14 +4,14 @@ public class Atendimento {
 
     private String dataHora;
     private String tipoAtendimento;
-    private String cpfPaciente;
+    Paciente paciente =  new Paciente();
 
     public Atendimento() {}
 
-    public Atendimento(String dataHora, String tipoAtendimento, String cpfPaciente) {
+    public Atendimento(String dataHora, String tipoAtendimento, String NewPaciente) {
         this.dataHora = dataHora;
         this.tipoAtendimento = tipoAtendimento;
-        this.cpfPaciente = cpfPaciente;
+        this.paciente  = paciente;
     }
 
     // getters, setters, toString()

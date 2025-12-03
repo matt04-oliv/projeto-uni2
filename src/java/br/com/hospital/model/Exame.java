@@ -5,15 +5,15 @@ public class Exame {
     private String tipoExame;
     private String dataExame;
     private String resultado;
-    private String cpfPaciente;
+    Paciente paciente = new Paciente();
 
     public Exame() {}
 
-    public Exame(String tipoExame, String dataExame, String resultado, String cpfPaciente) {
+    public Exame(String tipoExame, String dataExame, String resultado, Paciente cpfPaciente) {
         this.tipoExame = tipoExame;
         this.dataExame = dataExame;
         this.resultado = resultado;
-        this.cpfPaciente = cpfPaciente;
+        this.paciente = cpfPaciente;
     }
 
     // getters, setters, toString()
