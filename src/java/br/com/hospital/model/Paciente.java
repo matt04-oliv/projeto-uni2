@@ -4,16 +4,16 @@ public class Paciente {
 
     private String nome;
     private String dataNascimento;
-    private int cpf;
+    private String cpf;
     private String endereco;
-    private int telefone;
-    private int contatoEmergencia;
+    private String telefone;
+    private String contatoEmergencia;
     private String tipoPaciente;
 
     public Paciente() {}
 
-    public Paciente(String nome, String dataNascimento, int cpf, String endereco, int telefone,
-                    int contatoEmergencia, String tipoPaciente) {
+    public Paciente(String nome, String dataNascimento, String cpf, String endereco, String telefone,
+                    String contatoEmergencia, String tipoPaciente) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.cpf = cpf;
