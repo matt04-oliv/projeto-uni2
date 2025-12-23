@@ -23,6 +23,77 @@ public class Paciente {
         this.tipoPaciente = tipoPaciente;
     }
 
-    // getters e setters
-    // toString()
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getDataNascimento(){
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(){
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getEndereco(){
+        return endereco;
+    }
+
+    public void setEndereco(String endereco){
+        this.endereco = endereco;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getContatoEmergencia(){
+        return contatoEmergencia;
+    }
+
+    public void setContatoEmergencia(String contatoEmergencia){
+        this.contatoEmergencia = contatoEmergencia;
+    }
+
+    public String getTipoPaciente(){
+        return tipoPaciente;
+    }
+
+    public void setTipoPaciente(){
+        this.tipoPaciente = tipoPaciente;
+    }
+
+
+
+    // toString para exibição de dados
+    @Override
+    public String toString() {
+        return "Paciente{" +
+                ", nome='" + nome + '\'' +
+                ", data de nascimento='" + dataNascimento + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", contato de emergencia='" + contatoEmergencia + '\'' +
+                ", tipo de paciente='" + tipoPaciente + '\'' +
+                '}';
+    }
 }
+
