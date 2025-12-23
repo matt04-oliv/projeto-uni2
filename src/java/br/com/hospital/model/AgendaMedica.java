@@ -12,5 +12,29 @@ public class AgendaMedica {
         this.horarioFimInicio = horarioFimInicio;
     }
 
-    // getters, setters, toString()
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public String getHorarioFimInicio() {
+        return horarioFimInicio;
+    }
+
+    public void setHorarioFimInicio(String horarioFimInicio) {
+        this.horarioFimInicio = horarioFimInicio;
+    }
+
+    // toString
+    @Override
+    public String toString() {
+        return "AgendaMedica{" +
+                "data='" + data + '\'' +
+                ", horarioFimInicio='" + horarioFimInicio + '\'' +
+                '}';
+    }
+
 }
