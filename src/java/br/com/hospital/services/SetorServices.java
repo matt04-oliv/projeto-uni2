@@ -1,6 +1,8 @@
 package java.br.com.hospital.services;
 
 import java.br.com.hospital.dao.SetorDAO;
+import java.br.com.hospital.exception.DataNotFoundException;
+import java.br.com.hospital.exception.ValidationException;
 import java.br.com.hospital.model.Setor;
 
 public class SetorServices {
@@ -12,38 +14,46 @@ public class SetorServices {
     }
 
     public void cadastrarSetor(Setor setor) {
+
         if (setor == null) {
-            throw new IllegalArgumentException("Setor não pode ser nulo");
+            throw new ValidationException("Setor não pode ser nulo.");
         }
 
-        if (setor.getCpf() == null || setor.getCpf().isEmpty()) {
-            throw new IllegalArgumentException("Nome do setor é obrigatório");
+        if (setor.getNome() == null || setor.getNome().isEmpty()) {
+            throw new ValidationException("Nome do setor é obrigatório.");
         }
+
 
         setorDAO.inserir(setor);
     }
 
     public void atualizarSetor(Setor setor) {
-        if (setor.getCpf().equals("0")) {
-            throw new IllegalArgumentException("ID inválido");
+
+        if (setor == null) {
+            throw new ValidationException("Setor não pode ser nulo.");
         }
 
         setorDAO.atualizar(setor);
     }
 
     public void removerSetor(int id) {
+
         if (id <= 0) {
-            throw new IllegalArgumentException("ID inválido");
+            throw new ValidationException("ID inválido.");
         }
 
         setorDAO.deletar(id);
     }
 
-    public Setor buscarSetorPorCpf(int id) {
-        if (id <= 0) {
-            throw new IllegalArgumentException("ID inválido");
+    public Setor buscarSetorPorId(int id) {
+
+        Setor setor = setorDAO.buscarPorCpf("cpf");
+
+        if (setor == null) {
+            throw new DataNotFoundException("Setor não encontrado.");
         }
 
-        return setorDAO.buscarPorCpf(id);
+        return setor;
     }
+
 }

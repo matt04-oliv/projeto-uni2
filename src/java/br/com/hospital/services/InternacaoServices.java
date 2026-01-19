@@ -1,7 +1,10 @@
 package java.br.com.hospital.services;
 
 import java.br.com.hospital.dao.InternacaoDAO;
+import java.br.com.hospital.exception.DataNotFoundException;
+import java.br.com.hospital.exception.ValidationException;
 import java.br.com.hospital.model.Internacao;
+import java.br.com.hospital.model.Paciente;
 
 public class InternacaoServices {
 
@@ -14,37 +17,37 @@ public class InternacaoServices {
     public void internarPaciente(Internacao internacao) {
 
         if (internacao == null) {
-            throw new IllegalArgumentException("Internação não pode ser nula");
+            throw new ValidationException("Internação não pode ser nula.");
         }
 
         if (internacao.getPaciente() == null) {
-            throw new IllegalArgumentException("Paciente é obrigatório");
+            throw new ValidationException("Paciente é obrigatório.");
         }
 
-        if (internacao.getDataEntrada() == null) {
-            throw new IllegalArgumentException("Data de entrada é obrigatória");
+        if (internacao.getDataEntrada() == null || internacao.getDataEntrada().isEmpty()) {
+            throw new ValidationException("Data de entrada é obrigatória.");
         }
 
-        // regra: paciente não pode ter outra internação ativa
-        Internacao possuiInternacaoAtiva = internacaoDAO.buscarPorId();
+        boolean possuiInternacaoAtiva =
+                internacaoDAO.existeInternacaoAtiva(internacao.getPaciente()); // regra de domínio, nao é um erro
 
-//        if () {
-//            throw new IllegalStateException("Paciente já possui internação ativa");
-//        }
+        if (possuiInternacaoAtiva) {
+            throw new ValidationException("Paciente já possui internação ativa.");
+        }
 
         internacaoDAO.inserir(internacao);
     }
 
-    public void darAlta(boolean idInternacao, String dataSaida) {
+    public void darAlta(int idInternacao, String dataSaida) {
 
-        if (dataSaida == null) {
-            throw new IllegalArgumentException("Data de saída é obrigatória");
+        if (dataSaida == null || dataSaida.isEmpty()) {
+            throw new ValidationException("Data de saída é obrigatória.");
         }
 
-        Internacao internacao = internacaoDAO.buscarPorId();
+        Internacao internacao = internacaoDAO.buscarPorId(idInternacao);
 
         if (internacao == null) {
-            throw new IllegalStateException("Internação não encontrada");
+            throw new DataNotFoundException("Internação não encontrada.");
         }
 
         internacao.setDataSaida(dataSaida);

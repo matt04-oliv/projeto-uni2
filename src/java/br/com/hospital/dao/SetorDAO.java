@@ -7,5 +7,5 @@ public interface SetorDAO {
     void inserir(Setor setor);
     void atualizar(Setor setor);
     void deletar(int id);
-    Setor buscarPorCpf(int id);
+    Setor buscarPorCpf(String cpf);
 }
